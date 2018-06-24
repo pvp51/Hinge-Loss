@@ -2,7 +2,7 @@ import sys
 import math
 import random
 ################
-##  py GradientDescent.py datafile trainlabelfile etaValue stop_condition
+##  py GradientDescent.py datafile trainlabelfile
 ################
 
 #############
@@ -55,16 +55,6 @@ while(l != ''):
     n[int(a[0])] += 1
 
 ############
-## Read eta
-############
-eta = float(sys.argv[3])
-
-############
-## Read stop_condition
-############
-stop_condition = float(sys.argv[4])
-
-############
 ##Initialize w
 ############ 
 w=[]
@@ -75,8 +65,16 @@ for i in range(0,cols):
 ##Gradient descent iteration
 ##################
 
-#eta = 0.0001
-#stop_condition = 0.0001
+############
+## Add eta
+############
+eta = 0.001
+
+############
+## Add stop_condition
+############
+stop_condition = 0.000000001
+
 dellf = []
 for j in range(0, cols, 1):
     dellf.append(0)
