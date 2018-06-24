@@ -87,8 +87,7 @@ iter = 0
 
 while(abs(lastObjective - objective) > stop_condition):
     
-    lastObjective = objective
-    
+    lastObjective = objective  
     for j in range(0, cols, 1):
         dellf[j] = 0
 
@@ -96,7 +95,6 @@ while(abs(lastObjective - objective) > stop_condition):
     normw = 0
     for j in range(0, cols, 1):
         normw += w[j]*w[j]
-#    normw = math.sqrt(normw)  
     
     ## Compute dellf ##
     for i in range(0, rows, 1):
@@ -105,9 +103,6 @@ while(abs(lastObjective - objective) > stop_condition):
             if(trainlabels.get(i)*dp < 1):
                 for j in range(0, cols, 1):
                     dellf[j] = dellf[j] + (trainlabels.get(i)*data[i][j])
-
-#    for j in range(0, cols, 1):
-#        w[j] = w[j] + (eta * dellf[j])
 
     ## Update w ##
     for j in range(0, cols, 1):
