@@ -81,18 +81,12 @@ for j in range(0, cols, 1):
 
 lastObjective = 100000000
 objective = lastObjective - 10
-iter = 0
 
 while(abs(lastObjective - objective) > stop_condition):
     
     lastObjective = objective  
     for j in range(0, cols, 1):
         dellf[j] = 0
-
-    ## Compute normw ##
-    normw = 0
-    for j in range(0, cols, 1):
-        normw += w[j]*w[j]
     
     ## Compute dellf ##
     for i in range(0, rows, 1):
@@ -104,7 +98,7 @@ while(abs(lastObjective - objective) > stop_condition):
 
     ## Update w ##
     for j in range(0, cols, 1):
-        w[j] += eta * dellf[j]
+        w[j] = w[j] + (eta * dellf[j])
 
     ## Calculating error ##
     error = 0
@@ -113,9 +107,9 @@ while(abs(lastObjective - objective) > stop_condition):
             dp = dotproduct(w, data[i])
             if(1 - trainlabels.get(i)*dp > 0):
                 error = error + (1 - trainlabels.get(i)*dp)
+
     objective = error
     print("Objective is : ", error)
-    iter += 1
 
 print("w: ", w)
 normw = math.sqrt(w[0]**2 + w[1]**2)
