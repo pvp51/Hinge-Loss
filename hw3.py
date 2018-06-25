@@ -105,8 +105,9 @@ while(abs(lastObjective - objective) > stop_condition):
     for i in range(0, rows, 1):
         if(trainlabels.get(i) != None):
             dp = dotproduct(w, data[i])
-            if(1 - trainlabels.get(i)*dp > 0):
-                error = error + (1 - trainlabels.get(i)*dp)
+            gradient = 1 - trainlabels.get(i)*dp
+            if(gradient > 0):
+                error = error + gradient
 
     objective = error
     print("Objective is : ", error)
